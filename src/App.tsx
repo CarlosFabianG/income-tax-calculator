@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import Form from './components/form';
+
 import './App.css';
 
 function App() {
+  const [ error, setError ] = useState<string | null>(null);
+
+  const onSubmit = () => {
+    console.log('Submit!!!!');
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          Tax Annual Income
+        </h1>
       </header>
+      {error && <p>This is and error!!</p>}
+      <Form onSubmit={onSubmit}/>
+      <footer>Made with ❤️ in Mexico</footer>
     </div>
   );
-}
+};
 
 export default App;
