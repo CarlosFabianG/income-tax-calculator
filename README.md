@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# App Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Local Development Setup
 
-## Available Scripts
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
 
-In the project directory, you can run:
+2. **Create Environment Variables**:
+   - Create a file named `.env.local` in the root of the project.
+   - Add the following line to the `.env.local` file:
+     ```
+     REACT_APP_API_URL=<your_api_url>
+     ```
+   - Replace `<your_api_url>` with the actual API URL you will be using for local development.
 
-### `npm start`
+3. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. **Run the Application**:
+   ```bash
+   npm start
+   ```
+   - The app will run in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   - The page will reload if you make edits, and you will see any lint errors in the console.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Production Setup
 
-### `npm test`
+1. **Build the Application**:
+   - Ensure your `.env` file is set up with the production API URL:
+     ```
+     REACT_APP_API_URL=<your_production_api_url>
+     ```
+   - Replace `<your_production_api_url>` with the actual API URL for production.
+   - Run the following command to build the app:
+   ```bash
+   npm run build
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Deploy the Build**:
+   - The build will be generated in the `build` folder. You can deploy this folder to any static file server or hosting service (e.g., Netlify, Vercel, AWS S3).
+   - Ensure that your server is configured to serve the static files from the `build` directory.
 
-### `npm run build`
+3. **Access the Application**:
+   - Once deployed, access your application via the URL provided by your hosting service.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Additional Information
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- For more details on running tests, refer to the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
+- For deployment specifics, see the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
