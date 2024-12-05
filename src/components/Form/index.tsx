@@ -36,7 +36,7 @@ function Form({ submit, error, setError }: FormProps) {
 
   return (
     <div className={styles.form_container} data-testid='form'>
-      <label htmlFor='Income'>Annual Income (USD)💵</label>
+      <label htmlFor='Income'>Annual Income (CAD)💵</label>
       <div className={styles.input_container}>
         <span className={styles.currency_symbol}>$</span>
         <input 

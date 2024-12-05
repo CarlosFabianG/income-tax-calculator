@@ -21,7 +21,7 @@ const Results = ({ calculationResults, isLoading, error }: ResultsProps) => {
   if (error || !calculationResults) {
     return (
       <div className={styles.results_container}>
-        <p className={styles.text_instructions}>Enter an income and a year to see tax calculation details</p>
+        <p className={styles.text_instructions}>Enter an income and a year to see tax calculation details  😊</p>
       </div>
     );
   }
