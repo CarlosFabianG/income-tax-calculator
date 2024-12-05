@@ -13,7 +13,7 @@ const Alert: React.FC<AlertProps> = ({
   onClose 
 }) => {
   return (
-    <div className={`${styles.alert} ${styles[type]}`}>
+    <div className={`${styles.alert} ${styles[type]}`} data-testid='alert'>
       <p>{message}</p>
       {onClose && (
         <button 

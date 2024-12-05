@@ -36,10 +36,11 @@ function Form({ submit, error, setError }: FormProps) {
 
   return (
     <div className={styles.form_container} data-testid='form'>
-      <label htmlFor='Income'>Annual Income (CAD)💵</label>
+      <label htmlFor='income'>Annual Income (CAD)💵</label>
       <div className={styles.input_container}>
         <span className={styles.currency_symbol}>$</span>
         <input 
+          id='income'
           value={income} 
           onChange={(e) => {
             setIncome(e.target.value);
@@ -47,16 +48,16 @@ function Form({ submit, error, setError }: FormProps) {
           type='number'
           inputMode='decimal'
           placeholder='0.00'
-          name='Income'
-          aria-label='Annual income in US dollars'
-          
+          name='income'
+          aria-label='Annual income in Canadian dollars'
         />
       </div>
-      <label htmlFor="Year">Year 🗓️</label>
+      <label htmlFor='year'>Year 🗓️</label>
       <select 
+        id='year'
         value={year}
         onChange={(e) => setYear(e.target.value)}
-        name='Year'
+        name='year'
       >
         <option value=''>Select a year</option>
         <option value='2019'>2019</option>

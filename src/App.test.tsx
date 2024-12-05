@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
 
@@ -24,7 +23,7 @@ describe('App Component', () => {
 
   test('displays instructions message', () => {
     render(<App />);
-    const instructionsMessage = 'Enter an income and a year to see tax calculation details';
+    const instructionsMessage = 'Enter an income and a year to see tax calculation details 😊';
     const instructionsMessageElement = screen.getByText(instructionsMessage);
     expect(instructionsMessageElement).toBeInTheDocument();
   });
