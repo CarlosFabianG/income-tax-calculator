@@ -13,13 +13,25 @@ function Form({ submit, error, setError }: FormProps) {
   const [year, setYear] = useState('');
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
-  const isFormValid = income.trim() !== '' && year.trim() !== '';
+  const isFormValid = income.trim() !== '' && 
+    year.trim() !== '' && 
+    parseFloat(income) > 0;
 
   const handleSubmit = () => {
     setAttemptedSubmit(true);
     if (isFormValid) {
       submit(income, year);
     }
+  };
+
+  const getValidationMessage = () => {
+    if (!income.trim() || !year.trim()) {
+      return '💡 Please fill in all fields to calculate your taxes';
+    }
+    if (parseFloat(income) <= 0) {
+      return '💡 Please enter your annual income (must be greater than $0)';
+    }
+    return '';
   };
 
   return (
@@ -53,7 +65,7 @@ function Form({ submit, error, setError }: FormProps) {
         <option value='2022'>2022</option>
       </select>
       {attemptedSubmit && !isFormValid && (
-        <p className={styles.validationMessage}>Please enter both income and year to submit the form.</p>
+        <p className={styles.validationMessage}>{getValidationMessage()}</p>
       )}
       {error && (
         <Alert 

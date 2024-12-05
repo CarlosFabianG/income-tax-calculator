@@ -4,10 +4,10 @@ type TaxBracket = {
   rate: number
 }
 
-export const calculateTaxDetails = async (income: any, taxBracketsData: TaxBracket[]) => {
+export const calculateTaxDetails = async (income: number, taxBracketsData: TaxBracket[]) => {
     try {
-        const annualIncome = parseFloat(income);
-        if (isNaN(annualIncome) || annualIncome < 0) {
+        const annualIncome = income;
+        if (annualIncome < 0) {
             throw new Error('Please enter a valid income amount');
         }
 

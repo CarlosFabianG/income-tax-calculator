@@ -63,7 +63,7 @@ describe('calculateTaxDetails', () => {
   });
 
   it('should return null for invalid income input', async () => {
-    const result = await calculateTaxDetails('not a number', mockTaxBrackets);
+    const result = await calculateTaxDetails(-10, mockTaxBrackets);
     expect(result).toBeNull();
   });
 

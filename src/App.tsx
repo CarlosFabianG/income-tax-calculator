@@ -35,7 +35,7 @@ function App() {
       }
       const data = await response.json();
       const { tax_brackets } = data;
-      const taxDetails = await calculateTaxDetails(income, tax_brackets);
+      const taxDetails = await calculateTaxDetails(Number(income), tax_brackets);
       setCalculationResults(taxDetails);
       setIsLoading(false);
     } catch (error) {
