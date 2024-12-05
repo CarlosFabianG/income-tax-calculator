@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Form from './components/Form';
 import Results from './components/Results';
 import { calculateTaxDetails } from './helpers/calculateTaxDetails';
-import { API_URL } from './config';
 import './App.css';
+import { fetchTaxBrackets } from './services/taxService';
 
 interface TaxDetails {
   totalTax: string;
@@ -18,8 +18,6 @@ interface TaxDetails {
   }[];
 }
 
-const TAX_CALCULATOR_URL = `${API_URL}/tax-calculator/tax-year/`
-
 function App() {
   const [ error, setError ] = useState(false);
   const [ isLoading, setIsLoading ] = useState(false);
@@ -29,13 +27,8 @@ function App() {
     try {
       setError(false);
       setIsLoading(true);
-      const response = await fetch(TAX_CALCULATOR_URL + year);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      const { tax_brackets } = data;
-      const taxDetails = await calculateTaxDetails(Number(income), tax_brackets);
+      const taxBrackets = await fetchTaxBrackets(year);
+      const taxDetails = await calculateTaxDetails(Number(income), taxBrackets);
       setCalculationResults(taxDetails);
       setIsLoading(false);
     } catch (error) {
