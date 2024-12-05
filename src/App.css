@@ -19,11 +19,21 @@
   color: #61dafb;
 }
 
+section {
+  display: flex;
+  justify-content: center;
+}
+
 footer {
   margin-top: auto;
   padding: 1rem;
-  background-color: #f8f9fa;
+  background-color: white;
   text-align: center;
+}
+
+footer a {
+  color: black;
+  text-decoration: none;
 }
 
 
