@@ -4,14 +4,29 @@ import Spinner from '../Spinner';
 import styles from './Results.module.css';
 
 interface ResultsProps {
-  calculationResults: any | null;
+  calculationResults?: any | null;
   isLoading: boolean;
+  error?: boolean;
 }
 
-const Results = ({ calculationResults, isLoading }: ResultsProps) => {
-  return isLoading ? (
-    <Spinner />
-  ) : (
+const Results = ({ calculationResults, isLoading, error }: ResultsProps) => {
+  if (isLoading) {
+    return (
+      <div className={styles.results_container}>
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (error || !calculationResults) {
+    return (
+      <div className={styles.results_container}>
+        <p className={styles.text_instructions}>Enter an income and a year to see tax calculation details</p>
+      </div>
+    );
+  }
+
+  return (
     <div className={styles.results_container}>
       <ResultsCard 
         marginalRate={calculationResults.marginalRate}
