@@ -23,10 +23,11 @@ const TAX_CALCULATOR_URL = `${API_URL}/tax-calculator/tax-year/`
 function App() {
   const [ error, setError ] = useState(false);
   const [ isLoading, setIsLoading ] = useState(false);
-  const [calculationResults, setCalculationResults] = useState<TaxDetails | null>({} as TaxDetails);
+  const [calculationResults, setCalculationResults] = useState<TaxDetails | null>(null);
 
   const onSubmit = async (income: string, year: string) => {
     try {
+      setError(false);
       setIsLoading(true);
       const response = await fetch(TAX_CALCULATOR_URL + year);
       if (!response.ok) {

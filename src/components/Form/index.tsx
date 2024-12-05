@@ -11,13 +11,19 @@ interface FormProps {
 function Form({ submit, error, setError }: FormProps) {
   const [income, setIncome] = useState('');
   const [year, setYear] = useState('');
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+
+  const isFormValid = income.trim() !== '' && year.trim() !== '';
 
   const handleSubmit = () => {
-    submit(income, year);
+    setAttemptedSubmit(true);
+    if (isFormValid) {
+      submit(income, year);
+    }
   };
 
   return (
-    <div className={styles.form_container}>
+    <div className={styles.form_container} data-testid='form'>
       <label htmlFor='Income'>Annual Income (USD)💵</label>
       <div className={styles.input_container}>
         <span className={styles.currency_symbol}>$</span>
@@ -25,25 +31,30 @@ function Form({ submit, error, setError }: FormProps) {
           value={income} 
           onChange={(e) => {
             setIncome(e.target.value);
-            }} 
-          type='text'
+          }} 
+          type='number'
           inputMode='decimal'
           placeholder='0.00'
           name='Income'
           aria-label='Annual income in US dollars'
+          
         />
       </div>
       <label htmlFor="Year">Year 🗓️</label>
       <select 
         value={year}
         onChange={(e) => setYear(e.target.value)}
-        name='Year'>
-          <option disabled value='default'>Select a year</option>
-          <option value='2019'>2019</option>
-          <option value='2020'>2020</option>
-          <option value='2021'>2021</option>
-          <option value='2022'>2022</option>
+        name='Year'
+      >
+        <option value=''>Select a year</option>
+        <option value='2019'>2019</option>
+        <option value='2020'>2020</option>
+        <option value='2021'>2021</option>
+        <option value='2022'>2022</option>
       </select>
+      {attemptedSubmit && !isFormValid && (
+        <p className={styles.validationMessage}>Please enter both income and year to submit the form.</p>
+      )}
       {error && (
         <Alert 
           message={'We’re having trouble right now. Please try again later.'}
@@ -53,7 +64,12 @@ function Form({ submit, error, setError }: FormProps) {
           }} 
         />
       )}
-      <button className={styles.submitButton} onClick={handleSubmit}>Submit</button>
+      <button 
+        className={styles.submitButton} 
+        onClick={handleSubmit} 
+      >
+        Submit
+      </button>
     </div>
   );
 };
