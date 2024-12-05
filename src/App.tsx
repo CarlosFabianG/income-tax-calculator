@@ -4,19 +4,7 @@ import Results from './components/Results';
 import { calculateTaxDetails } from './helpers/calculateTaxDetails';
 import './App.css';
 import { fetchTaxBrackets } from './services/taxService';
-
-interface TaxDetails {
-  totalTax: string;
-  marginalRate: number;
-  effectiveTaxRate: string;
-  bracketDetails: {
-    min: number;
-    max: number;
-    rate: number;
-    taxableAmount: number;
-    bracketTax: number;
-  }[];
-}
+import { TaxDetails } from './types';
 
 function App() {
   const [ error, setError ] = useState(false);

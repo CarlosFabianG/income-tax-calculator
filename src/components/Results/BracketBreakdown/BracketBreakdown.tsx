@@ -1,16 +1,5 @@
+import { BracketBreakdownProps } from '../../../types';
 import styles from './BracketBreakdown.module.css';
-
-interface BracketDetail {
-  min: number;
-  max: number;
-  rate: number;
-  taxableAmount: number;
-  bracketTax: number;
-}
-
-interface BracketBreakdownProps {
-  bracketDetails: BracketDetail[];
-}
 
 const BracketBreakdown = ({ bracketDetails }: BracketBreakdownProps) => {
   return (

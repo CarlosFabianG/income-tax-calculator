@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import Alert from '../Alert';
 import styles from './Form.module.css';
-
-interface FormProps {
-  error: boolean;
-  setError: (error: boolean) => void;
-  submit: (year: string, income: string) => void;
-}
+import { FormProps } from '../../types';
 
 function Form({ submit, error, setError }: FormProps) {
   const [income, setIncome] = useState('');

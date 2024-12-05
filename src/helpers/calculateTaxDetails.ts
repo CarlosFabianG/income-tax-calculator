@@ -1,8 +1,4 @@
-type TaxBracket = {
-  max: number,
-  min: number,
-  rate: number
-}
+import { TaxBracket } from "../types";
 
 export const calculateTaxDetails = async (income: number, taxBracketsData: TaxBracket[]) => {
     try {

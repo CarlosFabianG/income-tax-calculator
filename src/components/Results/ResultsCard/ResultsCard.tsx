@@ -1,10 +1,5 @@
+import { ResultsCardProps } from '../../../types';
 import styles from './ResultsCard.module.css';
-
-interface ResultsCardProps {
-  marginalRate: number;
-  totalTax: number;
-  effectiveTaxRate: number;
-}
 
 const ResultsCard = ({ marginalRate, totalTax, effectiveTaxRate }: ResultsCardProps) => {
   return (
@@ -26,4 +21,5 @@ const ResultsCard = ({ marginalRate, totalTax, effectiveTaxRate }: ResultsCardPr
   );
 };
 
-export default ResultsCard; 
+export default ResultsCard;
+ 

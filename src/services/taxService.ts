@@ -1,10 +1,5 @@
 import { API_URL } from '../config';
-
-interface TaxBracket {
-  min: number;
-  max: number;
-  rate: number;
-}
+import { TaxBracket } from '../types';
 
 export async function fetchTaxBrackets(
   year: string, 
